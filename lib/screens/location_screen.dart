@@ -28,7 +28,7 @@ class _LocationScreenState extends State<LocationScreen> {
     setState(() {
       if (decodeData == null) {
         temperature = 0;
-        city = '';
+        city = 'your device';
         weatherIcon = 'Error';
         weatherMsg = 'Unable to fetch weather data';
         return;

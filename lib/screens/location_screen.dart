@@ -29,7 +29,9 @@ class _LocationScreenState extends State<LocationScreen> {
       if (decodeData == null) {
         temperature = 0;
         city = '';
-        weatherMsg = 'Error';
+        weatherIcon = 'Error';
+        weatherMsg = 'Unable to fetch weather data';
+        return;
       }
       double temp = decodeData['main']['temp'];
       temperature = temp.toInt();
@@ -79,13 +81,19 @@ class _LocationScreenState extends State<LocationScreen> {
                     style: TextButton.styleFrom(
                       primary: Colors.white,
                     ),
-                    onPressed: () {
-                      Navigator.push(
+                    onPressed: () async {
+                      var typedName = await Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) {
-                          return const CityScreen();
-                        }),
+                        MaterialPageRoute(
+                          builder: (context) {
+                            return const CityScreen();
+                          },
+                        ),
                       );
+                      if (typedName != null) {
+                        var weatherData = await weather.getByCity(typedName);
+                        updateUI(weatherData);
+                      }
                     },
                     child: const Icon(
                       Icons.location_city,

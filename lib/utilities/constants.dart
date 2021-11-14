@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 const kTempTextStyle = TextStyle(
+  color: Colors.blue,
   fontFamily: 'Spartan MB',
   fontSize: 100.0,
 );

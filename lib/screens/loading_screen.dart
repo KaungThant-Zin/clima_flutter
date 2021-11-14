@@ -31,12 +31,27 @@ class _LoadingScreenState extends State<LoadingScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: Center(
-        child: SpinKitSpinningLines(
-          color: Colors.white,
-          size: 100.0,
-        ),
+    return Scaffold(
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: const [
+          SpinKitSpinningLines(
+            color: Colors.blue,
+            size: 100.0,
+          ),
+          SizedBox(
+            height: 20.0,
+          ),
+          Text(
+            'Developed by Kaung Thant Zin',
+            style: TextStyle(
+              color: Colors.blue,
+              fontSize: 18.0,
+              fontWeight: FontWeight.bold,
+            ),
+          )
+        ],
       ),
     );
   }
